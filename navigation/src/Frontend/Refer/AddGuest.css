@@ -1,0 +1,174 @@
+/* ==============================
+   GUEST OVERLAY
+============================== */
+.guest-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: var(--z-overlay);
+}
+
+/* ==============================
+   MODAL
+============================== */
+.guest-modal {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-strong);
+
+  padding: 28px;
+  border-radius: 16px;
+
+  width: min(420px, 92vw);
+  max-height: calc(100dvh - 32px);
+
+  position: relative;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  color: var(--text-color);
+  animation: fadeIn 0.3s ease;
+}
+
+/* ==============================
+   CLOSE BUTTON
+============================== */
+.guest-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.guest-close-btn:hover {
+  color: var(--link-color);
+  transform: scale(1.1);
+}
+
+/* ==============================
+   TYPOGRAPHY
+============================== */
+.guest-modal h2 {
+  margin: 0 0 15px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.guest-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: -6px;
+}
+
+/* ==============================
+   SECTIONS
+============================== */
+.invite-section,
+.join-section {
+  margin: 15px 0;
+}
+
+/* ==============================
+   INVITE BOX
+============================== */
+.invite-box {
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 12px;
+
+  background: var(--panel-bg);
+  border: 1px dashed var(--border-color);
+}
+
+.invite-label {
+  color: var(--text-muted);
+}
+
+.invite-code {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin: 10px 0;
+  color: var(--text-color);
+}
+
+.invite-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* ==============================
+   BUTTONS (THEME SAFE)
+============================== */
+.guest-modal button {
+  margin-top: 8px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+
+  background: var(--button-bg);
+  color: var(--button-text);
+
+  transition: transform 0.15s ease, opacity 0.2s ease;
+}
+
+.guest-modal button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* ==============================
+   INPUT
+============================== */
+.guest-modal input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 8px;
+
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--input-text);
+
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 4px;
+  font-weight: 600;
+}
+
+/* ==============================
+   MESSAGE
+============================== */
+.message {
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--link-color);
+}
+
+/* ==============================
+   ANIMATION
+============================== */
+@keyframes fadeIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

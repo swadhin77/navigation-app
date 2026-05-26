@@ -1,0 +1,195 @@
+/* Reset & base */
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+	min-height: 100%;
+	background-color: var(--bg-color, #ffffff);
+}
+
+.register-page {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 40px 20px;
+	position: relative;
+	/* ✅ BACKGROUND IMAGE HERE (PAGE-SCOPED) */
+	background: url('../images/background3.jpg') no-repeat center center;
+	background-size: cover;
+}
+
+.register-page::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--overlay-bg);
+	z-index: 0;
+}
+
+/* Card */
+.register-container {
+	width: 100%;
+	max-width: 520px;
+	background: var(--card-bg);
+	backdrop-filter: blur(10px);
+	border-radius: 20px;
+	box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55);
+	padding: 38px 28px;
+	text-align: center;
+	position: relative;
+	z-index: 1;
+	color: var(--text-color);
+	transition: all 0.3s ease;
+}
+
+/* Logo */
+.logo-container {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+.logo {
+	width: 95px;
+	height: 95px;
+	border-radius: 50%;
+	border: 2px solid var(--border-color);
+	object-fit: cover;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Titles */
+.title {
+	font-size: 28px;
+	font-weight: 600;
+	margin-bottom: 6px;
+}
+
+.subtitle {
+	font-size: 15px;
+	font-style: italic;
+	color: var(--subtitle-color);
+	margin-bottom: 20px;
+}
+
+/* Form */
+.form-group {
+	margin-bottom: 18px;
+	text-align: left;
+}
+
+label {
+	display: block;
+	font-size: 14px;
+	margin-bottom: 6px;
+	color: var(--text-color);
+}
+
+input {
+	width: 100%;
+	padding: 12px 14px;
+	border-radius: 10px;
+	border: 1px solid var(--input-border);
+	font-size: 15px;
+	outline: none;
+	background: var(--input-bg);
+	color: var(--input-text);
+	transition: all 0.3s ease;
+}
+
+input:focus {
+	border-color: var(--button-bg);
+	box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* OTP row */
+.otp-row {
+	display: flex;
+	gap: 10px;
+}
+
+.otp-btn {
+	flex: 0 0 120px;
+	border: none;
+	border-radius: 10px;
+	font-size: 13px;
+	padding: 11px 8px;
+	color: #fff;
+	cursor: pointer;
+	background: var(--accent-gradient);
+}
+
+/* Submit button */
+.btn {
+	width: 100%;
+	padding: 14px;
+	border: none;
+	border-radius: 12px;
+	font-weight: 600;
+	font-size: 17px;
+	color: #fff;
+	cursor: pointer;
+	background: var(--primary-gradient);
+	margin-top: 14px;
+}
+
+/* Links */
+.links {
+	margin-top: 18px;
+	font-size: 14px;
+	color: var(--text-color);
+}
+
+.links a {
+	color: var(--link-color);
+	text-decoration: none;
+}
+
+/* Phone input */
+.react-tel-input {
+	width: 100% ;
+}
+
+.react-tel-input .form-control {
+	width: 100% ;
+	padding: 12px 14px 12px 65px ;
+	border-radius: 10px ;
+	background: var(--input-bg) ;
+	border: 1px solid var(--input-border) ;
+	color: var(--input-text) ;
+	font-size: 15px ;
+}
+
+.react-tel-input .flag-dropdown {
+	border: none ;
+	background: transparent;
+}
+
+.react-tel-input .country-list {
+	background: var(--card-bg) ;
+	border: 1px solid var(--border-color) ;
+	max-height: 200px ;
+	overflow-y: auto ;
+}
+
+/* Responsive */
+@media ( max-width : 500px) {
+	.register-container {
+		padding: 25px 20px;
+	}
+	.logo {
+		width: 80px;
+		height: 80px;
+	}
+	.title {
+		font-size: 22px;
+	}
+}

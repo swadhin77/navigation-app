@@ -1,0 +1,490 @@
+/* ===========================================================
+   GLOBAL ROOT + RESET
+=========================================================== */
+:root {
+	--blue-700: #007bff;
+	--blue-400: #00b0ff;
+	--glass: rgba(255, 255, 255, 0.95);
+	--card-shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
+	--soft-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+	--radius-lg: 16px;
+	--radius-md: 12px;
+	--ui-z: 1000;
+	--z-navigation: 1200;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* page does not scroll (map stays fixed) */
+  font-family: "Segoe UI", Roboto, system-ui, Arial, sans-serif;
+  background: var(--app-bg);
+  color: var(--text-color);
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* prevent page scrollbar */
+}
+
+
+/* ===========================================================
+   DASHBOARD MAIN LAYOUT
+=========================================================== */
+.dashboard {
+	position: relative;
+	width: 100vw;
+	min-height: 100dvh; height : auto;
+	overflow: clip;   /* instead of hidden */
+	background: transparent;
+	height: auto;
+}
+
+/* MAP */
+.map-container {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100vh;
+	z-index: 1;
+	will-change: transform;
+}
+/* KEEP SEARCH VISIBLE ALWAYS */
+.places-sheet.open ~ .ui-layer .floating-controls {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* ALWAYS KEEP TOP UI ABOVE SLIDER */
+.ui-layer {
+  z-index: 20000;   /* 🔥 increase */
+}
+.bottom-right {
+  z-index: 10001 !important;
+}
+/* UI LAYER */
+.ui-layer {
+	position: absolute;
+	inset: 0;
+	z-index: calc(var(--ui-z)+ 10);
+	pointer-events: none;
+}
+.circle-btn.satellite {
+  font-size: 16px;
+}
+.circle-btn.satellite.active {
+  background: #00e5ff;
+  box-shadow: 0 0 12px #00e5ff;
+}
+.ui-layer>* {
+	pointer-events: auto;
+}
+
+.dashboard.sidebar-active .map-container {
+	filter: blur(2px) brightness(0.95);
+	transition: filter 0.35s ease;
+}
+
+/* ===========================================================
+   FLOATING CONTROLS (Search + Get + Nearby)
+=========================================================== */
+.floating-controls {
+	position: absolute;
+	top: 18px;
+	left: 60px;
+	right: 24px;
+	height: 46px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	z-index: 999;
+	padding: 0 8px;
+	pointer-events: auto;
+	box-sizing: border-box;
+}
+/* ===========================================================
+   EXCLUDE BOTTOM-RIGHT CONTROLS FROM SIDEBAR EFFECTS
+=========================================================== */
+.dashboard.sidebar-active .floating-controls {
+	transform: translateX(240px);
+	opacity: 0.35;
+	filter: blur(2px);
+	transition: transform 0.35s ease, opacity 0.35s ease, filter 0.35s ease;
+}
+
+.dashboard.sidebar-active .nearby-bar {
+	transform: translateX(240px);
+	opacity: 0.35;
+	filter: blur(2px);
+	transition: transform 0.35s ease, opacity 0.35s ease, filter 0.35s ease;
+}
+
+.searchbar-container {
+	flex: 1 1 auto;
+	min-width: 160px;
+	max-width: calc(100% - 420px);
+	display: flex;
+	align-items: center;
+}
+
+/* GET BUTTON */
+.get-button {
+  flex: 0 0 auto;
+  height: 46px;
+  padding: 10px 22px;
+
+  background: var(--button-bg);
+  color: var(--button-text);
+
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform .18s ease, opacity .2s ease;
+}
+
+.get-button:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+
+/* NEARBY INLINE LIST */
+.nearby-inline-wrapper {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	min-width: 200px;
+}
+
+/* ===========================================================
+   MODE DROPDOWN
+=========================================================== */
+.mode-dropdown {
+	position: absolute;
+	top: 18px;
+	left: 12px;
+	z-index: 999999;
+	pointer-events: auto;
+}
+
+.mode-button {
+	height: 46px;
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	padding: 8px 14px;
+	border-radius: 28px;
+	background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+    box-shadow: var(--shadow-soft);
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.mode-button[disabled] {
+	opacity: 0.7;
+	cursor: not-allowed;
+}
+
+.dropdown-list {
+	position: absolute;
+	top: calc(46px + 8px);
+	left: 0;
+	background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-strong);
+    color: var(--text-color);
+	border-radius: 12px;
+	padding: 8px;
+	min-width: 160px;
+}
+
+.dropdown-item {
+	padding: 10px 12px;
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	cursor: pointer;
+	border-radius: 8px;
+}
+
+.dropdown-item:hover {
+background: var(--button-bg);
+color: var(--button-text);
+}
+/* ===========================================================
+   SCROLLABLE NEARBY
+=========================================================== */
+.nearby-scroll {
+	overflow-x: auto;
+	scrollbar-width: none;
+}
+
+.nearby-scroll::-webkit-scrollbar {
+	display: none;
+}
+
+/* ===========================================================
+   RESPONSIVE
+=========================================================== */
+@media ( max-width : 920px) {
+	.floating-controls {
+		left: 12px;
+		right: 12px;
+		gap: 8px;
+		top: 12px;
+	}
+	.searchbar-container {
+		min-width: 140px;
+		max-width: calc(100% - 180px);
+	}
+}
+
+@media ( max-width : 520px) {
+	.get-button {
+		padding: 10px 14px;
+		height: 42px;
+	}
+	.mode-button {
+		padding: 8px 10px;
+		font-size: 14px;
+	}
+}
+
+/* ==========================
+   RIGHT-SIDE BUTTONS STACK
+=========================== */
+/* Weather panel inside bottom-right stack */
+.weather-panel {
+	position: static; /* becomes part of stack */
+	margin: 0;
+	padding: 12px 14px;
+	border-radius: 12px;
+	text-align: center;
+	box-shadow: var(--card-shadow);
+	background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+/* Hide Mapbox zoom controls ONLY on touch devices */
+@media ( hover : none) and (pointer: coarse) {
+	.mapboxgl-control-container .mapboxgl-ctrl-group {
+		display: none;
+	}
+}
+
+/* Hide Get button ONLY on touch devices (mobile/tablet) */
+@media ( hover : none) and (pointer: coarse) {
+	.get-button {
+		display: none;
+	}
+}
+/* Sidebar active → move top UI only */
+.dashboard.sidebar-active .floating-controls, .dashboard.sidebar-active .nearby-bar
+	{
+	transform: translateX(240px) scale(0.96);
+	opacity: 0.25;
+	filter: blur(2px);
+	pointer-events: none; /* 🔑 THIS is what was missing */
+	transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s
+		ease, filter 0.3s ease;
+}
+
+/* ===========================================================
+   Sidebar active → blur bottom-right WITHOUT moving it
+=========================================================== */
+.dashboard.sidebar-active .bottom-right {
+	opacity: 0.4;
+	filter: blur(2px);
+	pointer-events: none;
+	transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.map-layout {
+	position: relative;
+	min-height: 100dvh; height : auto;
+	width: 100%;
+	overflow: clip;
+	height: auto;
+}
+
+.map-layout .map-container {
+	position: absolute;
+	inset: 0;
+}
+/* ===================================================
+   FUTURISTIC HUD BUTTON SYSTEM
+=================================================== */
+
+.bottom-right {
+  position: absolute;
+  right: 20px;
+  bottom: clamp(20px, 3vh, 40px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  z-index: 1200;
+}
+
+/* Base Glass Button */
+.circle-btn {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+
+  background: rgba(10, 15, 30, 0.75);
+  backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  color: #00E5FF;
+
+  font-weight: 600;
+  font-size: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
+}
+
+/* Hover Glow */
+.circle-btn:hover {
+  box-shadow:
+    0 0 12px rgba(0, 229, 255, 0.7),
+    0 0 24px rgba(0, 229, 255, 0.4),
+    inset 0 0 10px rgba(0, 229, 255, 0.3);
+  transform: scale(1.08);
+}
+
+/* ==========================
+   SOS SPECIAL
+========================== */
+
+.sos-btn {
+  color: #FF2E63;
+  border: 1px solid rgba(255, 46, 99, 0.5);
+  box-shadow: 0 0 16px rgba(255, 46, 99, 0.5);
+}
+
+.sos-btn::after {
+  content: "";
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 46, 99, 0.6);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  70% { transform: scale(1.5); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* ==========================
+   ACTIVE STATES
+========================== */
+
+.view-toggle-btn.active,
+.traffic.active,
+.gps.active {
+  background: rgba(0, 229, 255, 0.15);
+  box-shadow:
+    0 0 22px rgba(0, 229, 255, 0.9),
+    inset 0 0 14px rgba(0, 229, 255, 0.6);
+}
+
+/* ==========================
+   Compass Rotation Support
+========================== */
+
+.recenter {
+  transition: transform 0.3s ease;
+}
+
+/* ==========================
+   WEATHER BUTTON (SOFT GLOW)
+========================== */
+
+.weather {
+  border: 1px solid rgba(255, 204, 0, 0.5);
+  color: #FFD700;
+  box-shadow: 0 0 12px rgba(255, 204, 0, 0.4);
+}
+/* ==========================
+   STREET VIEW BOTTOM PANEL
+========================== */
+
+.streetview-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  background: #000;
+  z-index: 2000;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+  animation: slideUp 0.35s ease forwards;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.streetview-container {
+  width: 100%;
+  height: 100%;
+}
+
+.close-streetview {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  z-index: 10;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.close-streetview:hover {
+  background: #FF2E63;
+}
+/* ==========================
+   GLOBAL SCROLLBAR FIX
+========================== */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar {
+  display: none;
+}
+
+html, body, #root {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}

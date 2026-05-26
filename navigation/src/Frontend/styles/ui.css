@@ -1,0 +1,47 @@
+/* /src/styles/ui.css */
+
+.ui-panel {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 10px;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+  backdrop-filter: blur(6px);
+  z-index: 1200;
+}
+
+.ui-btn {
+  padding: 7px 12px;
+  background: #222;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+
+.ui-btn:hover {
+  background: #333;
+}
+
+.ui-section-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  padding-bottom: 3px;
+}
+
+.ui-alert {
+  padding: 6px;
+  background: #b13838;
+  border-radius: 4px;
+  margin-top: 6px;
+}
+.dark-mode .ui-panel {
+  background: rgba(0,0,0,0.85);
+}
+
+.dark-mode .overlay-panel {
+  background: rgba(25,25,25,0.85);
+}

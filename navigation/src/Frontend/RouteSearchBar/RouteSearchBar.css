@@ -1,0 +1,264 @@
+/* ============================================================
+   WRAPPER
+============================================================ */
+.rsb-wrapper {
+  position: absolute;
+  top: max(env(safe-area-inset-top), 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92vw, 380px);
+  background: white;
+  padding: 12px 16px;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+  z-index: var(--z-search);
+  box-sizing: border-box;
+  backdrop-filter: blur(1px);
+}
+/* Allow touch / click inside search bar on mobile */
+.rsb-wrapper {
+  pointer-events: auto !important;
+}
+
+/* Make sure Mapbox does NOT eat touches */
+.mapboxgl-canvas {
+  touch-action: none;
+}
+
+/* Force menu buttons to register clicks */
+.rsb-menu-btn,
+.rsb-3dot-btn,
+.rsb-arrow-btn {
+  pointer-events: auto !important;
+  z-index: 999999;
+}
+
+/* ============================================================
+   ROW (FROM / TO)
+============================================================ */
+.rsb-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ============================================================
+   SWAP BTN
+============================================================ */
+.rsb-swap-btn {
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease;
+  font-size: 18px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: #f2f2f2;
+}
+.rsb-swap-btn:hover {
+  transform: scale(1.2);
+}
+
+/* ============================================================
+   MENU (TOP RIGHT ⋮)
+============================================================ */
+.rsb-menu-btn {
+  background: #f2f2f2;
+  border: none;
+  font-size: 20px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.rsb-menu-anchor {
+  position: relative;
+}
+
+.rsb-menu-popup {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 200px;
+  background: white;
+  border-radius: 12px;
+  padding: 6px 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  z-index: var(--z-menu);
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.15s ease;
+}
+
+.route-menu-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.route-menu-item:hover {
+  background: #f4f4f4;
+}
+
+/* ============================================================
+   ANIMATION
+============================================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   3-DOT + ARROW ROW
+============================================================ */
+.rsb-3dot-row {
+  width: 100%;
+  margin: 6px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.rsb-3dot-btn {
+  font-size: 22px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  line-height: 20px;
+}
+
+.rsb-arrow-btn {
+  font-size: 20px;
+  cursor: pointer;
+  user-select: none;
+  line-height: 20px;
+}
+
+/* ============================================================
+   EXPANDED STOP INPUTS
+============================================================ */
+.stop-exp-row {
+  width: 100%;
+  margin: 6px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   STOP DRAG
+============================================================ */
+.stop-draggable {
+  touch-action: none;
+}
+
+/* ============================================================
+   STOPSEARCH INPUT SHARED
+============================================================ */
+.rsb-input,
+.stopsearch-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  color: black;
+  box-sizing: border-box;
+}
+
+.stopsearch-input::placeholder {
+  color: #777;
+}
+
+.stopsearch-input:focus {
+  outline: none;
+  border-color: #1E90FF;
+}
+
+/* ============================================================
+   STOPREMOVE (X)
+============================================================ */
+.stopsearch-remove-btn {
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 6px;
+}
+
+/* ============================================================
+   SUGGESTIONS POPUP
+============================================================ */
+.rsb-suggestion {
+  padding: 10px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.rsb-suggestion:hover {
+  background: #f2f2f2;
+}
+
+.rsb-suggestions {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 6px);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  z-index: var(--z-search);
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+/* ============================================================
+   MOBILE POPUP SAFE
+============================================================ */
+@media (max-width: 480px) {
+  .rsb-menu-popup {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    width: auto;
+    max-height: 60vh;
+    overflow-y: auto;
+    border-radius: 16px;
+    z-index: var(--z-menu);
+  }
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 768px) {
+  .rsb-wrapper {
+    width: 94vw;
+  }
+
+  .rsb-3dot-row {
+    margin: 4px 0;
+  }
+
+  .rsb-3dot-btn {
+    font-size: 20px;
+  }
+
+  .rsb-arrow-btn {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rsb-3dot-btn {
+    font-size: 18px;
+  }
+  .rsb-arrow-btn {
+    font-size: 16px;
+  }
+
+  .stopsearch-input {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,103 @@
+/* Container for multiple stops */
+.multi-stop-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Three-dot button */
+.three-dot-btn {
+  cursor: pointer;
+  font-size: 24px;
+  padding: 5px 10px;
+  display: inline-block;
+  user-select: none;
+}
+
+/* Three-dot menu */
+.three-dot-menu {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 180px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+
+.menu-item {
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.menu-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Search box for each stop */
+.merged-search-box {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 6px 10px;
+  background-color: #fff;
+  transition: border-color 0.2s;
+}
+
+.merged-search-box.second {
+  border-color: #007bff; /* Highlight active input */
+}
+
+/* Search icon inside input */
+.merged-icon-search {
+  font-size: 16px;
+  margin-right: 8px;
+  color: #555;
+}
+
+/* Input styling */
+.merged-search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 6px 0;
+}
+
+/* Clear (X) button */
+.merged-clear-btn {
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 8px;
+  color: #888;
+  transition: color 0.2s;
+}
+
+.merged-clear-btn:hover {
+  color: #000;
+}
+
+/* GO button */
+.go-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.go-btn:hover {
+  background-color: #0056b3;
+}

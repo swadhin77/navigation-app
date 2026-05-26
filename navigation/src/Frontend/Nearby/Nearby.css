@@ -1,0 +1,409 @@
+/* =============================================================
+   FUTURISTIC NEARBY HUD
+============================================================= */
+.nearby-hud {
+  flex: 1;              /* 🔥 critical */
+  min-width: 0;         /* 🔥 VERY IMPORTANT (fixes flex overflow issue) */
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding: 10px 18px;
+
+  background: rgba(10, 15, 30, 0.75);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  border-radius: 40px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+.nearby-hud::-webkit-scrollbar {
+  display: none;
+}
+.nearby-item {
+  flex: 0 0 auto;   /* 🔥 VERY IMPORTANT */
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+.places-sheet::-webkit-scrollbar {
+  display: none;
+}
+
+.places-sheet {
+  scrollbar-width: none;
+}
+.sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-sheet {
+  margin-left: auto;
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+/* ===============================
+   MOBILE DRAGGABLE SHEET
+================================ */
+@media (max-width: 768px) {
+
+  .places-sheet {
+    height: 50%;
+    transition: height 0.3s ease;
+  }
+
+  .places-sheet.full {
+    height: 100%;
+  }
+
+  .drag-line {
+    width: 40px;
+    height: 4px;
+    background: #ccc;
+    border-radius: 10px;
+    margin: 0 auto 10px;
+  }
+}
+/* ===============================
+   DESKTOP SPLIT VIEW
+================================ */
+@media (min-width: 1024px) {
+
+  /* LEFT SLIDING PANEL */
+  .places-sheet {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 50%;     /* 🔥 HALF SCREEN */
+    height: 100%;
+
+    background: white;
+    padding: 20px;
+
+    transform: translateX(-100%);   /* 🔥 hidden initially */
+    transition: transform 0.4s ease;
+
+    z-index: 9000;
+  }
+
+  /* WHEN OPEN */
+  .places-sheet.open {
+    transform: translateX(0);   /* 🔥 slide in */
+  }
+
+  /* MAP ADJUST */
+  .map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+
+    transition: all 0.4s ease;
+  }
+
+  /* WHEN PANEL OPEN → SHIFT MAP */
+  .map-container.shrink {
+    left: 50%;   /* 🔥 push map */
+  }
+
+}
+/* ================================
+   FULL SCREEN BOTTOM SHEET
+================================ */
+.places-sheet {
+  position: fixed;
+  left: 0;
+  background: #ffffff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+  padding: 15px;
+  overflow-y: auto;
+
+  z-index: 9999;
+
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+
+  animation: slideUp 0.3s ease;
+}
+@media (max-width: 768px) {
+
+  .places-sheet {
+    backdrop-filter: blur(8px);
+  }
+
+}
+/* ANIMATION */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* CARD IMPROVED */
+.place-card {
+  background: #ffffff;
+  margin-bottom: 12px;
+  padding: 14px;
+  border-radius: 14px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+  transition: all 0.2s ease;
+}
+
+.place-card:hover {
+  transform: scale(1.02);
+}
+
+/* TEXT */
+.place-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.address {
+  font-size: 13px;
+  color: #777;
+}
+
+/* BUTTONS */
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.card-actions button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  color: white;
+  cursor: pointer;
+}
+
+/* PANEL FIX */
+.place-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+
+  background: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+  z-index: 10000;
+}
+.panel-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.panel-actions button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background: #28a745;
+  color: white;
+}
+/* Add separator to every item except last */
+.nearby-item:not(:last-child)::after {
+  content: "|";
+  margin-left: 14px;
+  color: rgba(0, 229, 255, 0.5);
+  font-weight: 400;
+}
+.custom-marker {
+  background: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: bold;
+  border: 1px solid #ccc;
+}
+.place-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 45%;
+
+  background: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+  padding: 20px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+
+  z-index: 999;
+}
+
+.place-panel h2 {
+  margin-bottom: 10px;
+}
+
+.place-panel .address {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.place-panel button {
+  width: 100%;
+  padding: 12px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+/* =============================================================
+   NEARBY ITEM BUTTON
+============================================================= */
+
+/* =============================================================
+   ICON ITEMS DESIGN (HORIZONTAL STYLE)
+============================================================= */
+
+.nearby-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  color: #00E5FF;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  padding: 8px 14px;
+  border-radius: 20px;
+
+  transition: all 0.3s ease;
+}
+
+/* Icon size */
+.nearby-icon {
+  font-size: 18px;
+}
+
+/* =============================================================
+   HOVER GLOW EFFECT
+============================================================= */
+
+.nearby-item:hover {
+  background: rgba(0, 229, 255, 0.1);
+
+  box-shadow:
+    0 0 10px rgba(0, 229, 255, 0.6),
+    inset 0 0 10px rgba(0, 229, 255, 0.4);
+
+  transform: translateY(-2px);
+}
+
+/* ACTIVE STATE */
+.nearby-item.active {
+  background: rgba(0, 229, 255, 0.2);
+
+  box-shadow:
+    0 0 20px rgba(0, 229, 255, 0.8),
+    inset 0 0 15px rgba(0, 229, 255, 0.6);
+
+  color: #00E5FF;
+}
+
+/* =============================================================
+   MARKER STYLE
+============================================================= */
+
+.nearby-marker {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #00E5FF;
+  border: 3px solid #0f172a;
+  box-shadow: 0 0 12px rgba(0,229,255,0.8);
+}
+
+/* =============================================================
+   POPUP STYLE
+============================================================= */
+
+.mapboxgl-popup-content {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(0,229,255,0.4);
+  backdrop-filter: blur(12px);
+  border-radius: 14px;
+  padding: 10px 14px;
+  color: white;
+  box-shadow: 0 6px 24px rgba(0,229,255,0.25);
+}
+
+.mapboxgl-popup-tip {
+  display: none;
+}
+
+.nearby-popup-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: #00E5FF;
+}
+
+.nearby-popup-sub {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+/* =============================================================
+   MOBILE RESPONSIVE
+============================================================= */
+
+@media (max-width: 768px) {
+  .nearby-hud {
+    top: 80px;
+    gap: 10px;
+    padding: 10px 16px;
+    overflow-x: auto;
+    max-width: 92%;
+  }
+
+  .nearby-item {
+    min-width: 60px;
+    font-size: 11px;
+  }
+
+  .nearby-icon {
+    font-size: 18px;
+  }
+}

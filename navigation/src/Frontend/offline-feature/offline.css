@@ -1,0 +1,103 @@
+/* wrapper for animation */
+
+.offline-wrapper{
+
+  position: fixed;
+  top: -80px;
+  left: 0;
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  transition: top 0.6s cubic-bezier(.4,0,.2,1);
+
+  z-index: 999999;
+
+}
+
+.offline-wrapper.show{
+  top: 10px;
+}
+
+
+/* banner style */
+
+.offline-banner{
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 10px 24px;
+
+  border-radius: 40px;
+
+  background: rgba(20,20,20,0.75);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,80,80,0.4);
+
+  box-shadow:
+      0 0 20px rgba(255,70,70,0.35),
+      0 4px 25px rgba(0,0,0,0.5);
+
+  color: white;
+
+  font-weight: 600;
+  font-size: 14px;
+
+  letter-spacing: 0.3px;
+
+}
+
+
+/* warning icon */
+
+.offline-icon{
+
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ff4d4d;
+
+  font-size: 16px;
+
+  animation: pulseWarning 1.6s infinite;
+
+}
+
+
+/* text */
+
+.offline-text{
+  white-space: nowrap;
+}
+
+
+/* pulse animation */
+
+@keyframes pulseWarning{
+
+  0%{
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50%{
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+
+  100%{
+    transform: scale(1);
+    opacity: 1;
+  }
+
+}

@@ -1,0 +1,170 @@
+/* ==============================
+   OVERLAY
+============================== */
+.setting-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: var(--z-overlay);
+}
+
+/* ==============================
+   MODAL
+============================== */
+.setting-overlay .modal {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-strong);
+
+  width: 400px;
+  padding: 25px;
+  border-radius: 12px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: center;
+
+  color: var(--text-color);
+}
+
+/* ==============================
+   CLOSE BUTTON
+============================== */
+.setting-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: color 0.2s ease;
+}
+
+.setting-close-btn:hover {
+  color: var(--link-color);
+}
+
+/* ==============================
+   MAIN OPTION BUTTONS
+============================== */
+.setting-overlay .setting-options button {
+  display: block;
+  margin: 12px auto;
+  padding: 10px 15px;
+  width: 80%;
+
+  border: none;
+  border-radius: 8px;
+
+  background: var(--button-bg);
+  color: var(--button-text);
+
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.2s ease;
+}
+
+.setting-overlay .setting-options button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* ==============================
+   INPUTS & SELECT
+============================== */
+.setting-overlay .form-section select,
+.setting-overlay .form-section input {
+  display: block;
+  width: 90%;
+  margin: 10px auto;
+  padding: 8px;
+
+  border-radius: 8px;
+  border: 1px solid var(--input-border);
+
+  background: var(--input-bg);
+  color: var(--input-text);
+}
+
+/* ==============================
+   OTP
+============================== */
+.setting-overlay .otp-container {
+  margin-top: 10px;
+}
+
+.setting-overlay .otp-boxes {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto;
+  width: 90%;
+}
+
+.setting-overlay .otp-boxes input {
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  text-align: center;
+
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+
+  background: var(--input-bg);
+  color: var(--input-text);
+}
+
+/* ==============================
+   OTP ACTION BUTTONS
+============================== */
+.setting-overlay .send-otp-btn,
+.setting-overlay .confirm-otp-btn {
+  margin: 10px auto;
+  padding: 8px 15px;
+
+  background: var(--button-bg);
+  color: var(--button-text);
+
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  transition: transform 0.15s ease, opacity 0.2s ease;
+}
+
+.setting-overlay .send-otp-btn:hover,
+.setting-overlay .confirm-otp-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* ==============================
+   MODAL ACTIONS
+============================== */
+.setting-overlay .modal-actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.setting-overlay .modal-actions button {
+  flex: 1;
+  padding: 8px 12px;
+
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  background: var(--button-bg);
+  color: var(--button-text);
+
+  transition: transform 0.15s ease, opacity 0.2s ease;
+}
+
+.setting-overlay .modal-actions button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}

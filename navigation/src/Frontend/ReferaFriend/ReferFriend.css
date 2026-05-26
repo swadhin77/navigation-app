@@ -1,0 +1,160 @@
+/* ==============================
+   OVERLAY
+============================== */
+.refer-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: var(--z-overlay);
+  animation: fadeIn 0.25s ease;
+}
+
+/* ==============================
+   MODAL
+============================== */
+.refer-modal {
+  position: relative;
+
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-strong);
+
+  border-radius: 16px;
+  padding: 28px;
+
+  width: min(420px, 92vw);
+  max-height: calc(100dvh - 32px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+
+  color: var(--text-color);
+  animation: popIn 0.3s ease;
+}
+
+/* ==============================
+   ICON
+============================== */
+.refer-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+/* ==============================
+   TEXT
+============================== */
+.refer-modal h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.refer-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+/* ==============================
+   FORM
+============================== */
+.refer-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.refer-form input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--input-text);
+
+  font-size: 14px;
+}
+
+.refer-form input::placeholder {
+  color: var(--input-placeholder);
+}
+
+.refer-form input:focus {
+  outline: none;
+  border-color: var(--button-bg);
+}
+
+/* ==============================
+   BUTTON
+============================== */
+.refer-form button {
+  background: var(--button-bg);
+  color: var(--button-text);
+
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+
+  transition: transform 0.15s ease, opacity 0.2s ease;
+}
+
+.refer-form button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* ==============================
+   CLOSE BUTTON
+============================== */
+.refer-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.refer-close-btn:hover {
+  color: var(--link-color);
+}
+
+/* ==============================
+   ANIMATIONS
+============================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

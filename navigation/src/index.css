@@ -1,0 +1,153 @@
+html,
+body {
+  width: 100%;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+
+  overscroll-behavior: none;
+  touch-action: manipulation;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Root becomes the modal scroll container */
+#root {
+  width: 100%;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+
+  position: relative;
+  overflow: hidden;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* .mapboxgl-canvas,
+.mapboxgl-control-container {
+  z-index: 1 !important;
+} */
+/* Base body */
+body {
+	min-width: 320px;
+	min-height: 100vh;
+	font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	background-color: var(--bg-color);
+	background-image: var(--app-background);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	color: var(--text-color);
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Links */
+a {
+	font-weight: 500;
+	color: var(--link-color);
+	text-decoration: none;
+}
+
+a:hover {
+	color: var(--link-hover);
+}
+
+/* Buttons (reset safe) */
+button {
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+button:focus-visible {
+	outline: 2px solid var(--link-color);
+	outline-offset: 2px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+	color: var(--text-color);
+	margin: 0 0 12px 0;
+}
+/* ==========================
+   GLOBAL MAP MENU EXPANSION
+========================== */
+
+.bottom-right .menu-expand {
+  position: absolute;
+
+  /* 🔥 MAIN FIX */
+  right: 80px;        /* space from ⚙ button */
+  top: 50%;           /* align vertically */
+  transform: translateY(-50%) translateX(40px);
+
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bottom-right .menu-expand.open {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+  pointer-events: auto;
+}/* ==========================
+   TRAFFIC SIGNAL UI (FINAL)
+========================== */
+
+.traffic-signal-marker {
+  width: 18px;
+  height: 42px;
+  background: rgba(0,0,0,0.9);
+  border-radius: 10px;
+  padding: 4px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  box-shadow: 0 0 12px rgba(0,0,0,0.6);
+}
+
+/* LIGHTS */
+.traffic-signal-marker .light {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* COLORS */
+.light.red {
+  background: red;
+  box-shadow: 0 0 6px red;
+}
+
+.light.yellow {
+  background: yellow;
+  box-shadow: 0 0 6px yellow;
+}
+
+.light.green {
+  background: lime;
+  box-shadow: 0 0 6px lime;
+}
+.mapboxgl-map {
+  z-index: 1;
+}
+
+.mapboxgl-ctrl-top-right,
+.mapboxgl-ctrl-top-left,
+.mapboxgl-ctrl-bottom-right,
+.mapboxgl-ctrl-bottom-left {
+  z-index: 5;
+}

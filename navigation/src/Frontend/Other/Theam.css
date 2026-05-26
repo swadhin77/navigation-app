@@ -1,0 +1,122 @@
+:root {
+	/* Colors */
+	--bg-color: #ffffff;
+	--text-color: #121212;
+	--subtitle-color: #555555;
+	--card-bg: #f4f4f4;
+	--panel-bg: #ffffff;
+	--button-bg: #121212;
+	--button-text: #ffffff;
+	--border-color: #dddddd;
+	--input-bg: #ffffff;
+	--input-border: #cccccc;
+	--input-text: #121212;
+	--link-color: #0066cc;
+	--link-hover: #004c99;
+	--text-muted: #555555;
+	/* Shadows */
+	--shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.15);
+	--shadow-strong: 0 8px 30px rgba(0, 0, 0, 0.25);
+	/* Z-INDEX SYSTEM */
+	--z-map: 1;
+	--z-search: 1000;
+	--z-nearby: 1100;
+	--z-menu: 2000;
+	--z-modal: 5000;
+	--z-overlay: 999999; /* fixed duplicate */
+	/* Layout helpers */
+	--search-bar-height: 56px;
+	--input-placeholder: #888888;
+	--overlay-bg: rgba(0, 0, 0, 0.35);
+	--accent-gradient: linear-gradient(90deg, #ff9966, #ff5e62);
+	--primary-gradient: linear-gradient(90deg, #4facfe, #00f2fe);
+	--focus-ring: rgba(0, 102, 204, 0.25);
+	--menu-bg: var(--card-bg);
+	--menu-border: var(--border-color);
+	--menu-hover: var(--hover-bg, #f0f0f0);
+	--menu-active: rgba(0, 0, 0, 0.05);
+	--menu-overlay: rgba(0, 0, 0, 0.4);
+	--menu-icon: var(--text-muted);
+	--sidebar-button-bg: linear-gradient(90deg, #1976d2, #2196f3);
+	--sidebar-button-text: #ffffff;
+	--sidebar-button-shadow: 0 3px 8px rgba(25, 118, 210, 0.30);
+	--sidebar-settings-bg: linear-gradient(90deg, #1976d2, #42a5f5);
+	--sidebar-logout-bg: linear-gradient(90deg, #e53935, #f44336);
+	--toggle-on-bg: #00e676;
+	--toggle-circle: #ffffff;
+	--sidebar-bg: rgba(255,255,255,0.92);
+
+--sidebar-text: #121212;
+
+--sidebar-card: rgba(0, 229, 255, 0.08);
+
+--sidebar-border: rgba(0, 229, 255, 0.15);
+
+--sidebar-glow: rgba(0,229,255,0.25);
+--sidebar-bg-start: rgba(255,255,255,0.92);
+--sidebar-bg-end: rgba(245,248,255,0.96);
+
+--sidebar-text: #121212;
+--sidebar-subtext: #4b5563;
+
+--sidebar-border: rgba(0,0,0,0.08);
+
+--sidebar-card: rgba(255,255,255,0.75);
+
+--sidebar-hover: rgba(0,0,0,0.05);
+}
+
+/* 🔥 DARK MODE */
+html.dark-mode {
+	--bg-color: #121212;
+	--text-color: #ffffff;
+	--subtitle-color: #aaaaaa;
+	--card-bg: #1e1e1e;
+	--panel-bg: #1a1a1a;
+	--button-bg: #f1f1f1;
+	--button-text: #121212;
+	--border-color: #333333;
+	--input-bg: #2a2a2a;
+	--text-muted: #aaaaaa;
+	--input-border: #444444;
+	--input-text: #ffffff;
+	--link-color: #66aaff;
+	--link-hover: #99cfff;
+	--shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.6);
+	--shadow-strong: 0 8px 30px rgba(0, 0, 0, 0.8);
+	--input-placeholder: #bbbbbb;
+	--overlay-bg: rgba(0, 0, 0, 0.6);
+	--accent-gradient: linear-gradient(90deg, #ff7e5f, #ff3d3d);
+	--primary-gradient: linear-gradient(90deg, #3a7bd5, #00d2ff);
+	--focus-ring: rgba(102, 170, 255, 0.35);
+	--menu-hover: rgba(255, 255, 255, 0.05);
+	--menu-active: rgba(255, 255, 255, 0.08);
+	--menu-overlay: rgba(0, 0, 0, 0.6);
+	--sidebar-button-bg: rgba(40, 40, 40, 0.85);
+	--sidebar-button-text: #ffffff;
+	--sidebar-button-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+	--sidebar-settings-bg: rgba(50, 50, 50, 0.85);
+	--sidebar-logout-bg: rgba(60, 30, 30, 0.85);
+	--toggle-on-bg: #00c853;
+	--toggle-circle: #ffffff;
+	--sidebar-bg: rgba(8,18,35,0.92);
+	--sidebar-text: #EAFBFF;
+--sidebar-text: #EAFBFF;
+
+--sidebar-card: rgba(0,229,255,0.06);
+
+--sidebar-border: rgba(0,229,255,0.22);
+--sidebar-bg-start: rgba(8,18,35,0.95);
+--sidebar-bg-end: rgba(5,12,24,0.92);
+
+--sidebar-text: #EAFBFF;
+--sidebar-subtext: rgba(230,247,255,0.65);
+
+--sidebar-border: rgba(0,229,255,0.25);
+
+--sidebar-card: rgba(0,229,255,0.06);
+
+--sidebar-hover: rgba(0,229,255,0.12);
+
+--sidebar-glow: rgba(0,229,255,0.3);
+}

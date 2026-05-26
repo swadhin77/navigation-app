@@ -1,0 +1,154 @@
+/* ==============================
+   TRAVEL HISTORY OVERLAY
+============================== */
+.travel-history-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: var(--z-overlay);
+}
+
+/* ==============================
+   MODAL
+============================== */
+.travel-history-modal {
+  width: 95%;
+  max-width: 950px;
+  border-radius: 15px;
+
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-strong);
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  color: var(--text-color);
+  z-index: var(--z-modal);
+}
+
+/* ==============================
+   HEADER
+============================== */
+.travel-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 20px;
+  background: var(--panel-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.travel-history-header h2 {
+  margin: 0;
+  color: var(--text-color);
+}
+
+/* ==============================
+   CLOSE BUTTON
+============================== */
+.travel-history-close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: color 0.2s ease;
+}
+
+.travel-history-close-btn:hover {
+  color: var(--link-color);
+}
+
+/* ==============================
+   FILTERS
+============================== */
+.travel-history-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 15px 20px;
+  background: var(--panel-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.travel-history-filters select,
+.travel-history-filters input[type="date"] {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 15px;
+
+  color: var(--text-color);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+}
+
+/* ==============================
+   TABLE
+============================== */
+.travel-history-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.travel-history-table th,
+.travel-history-table td {
+  padding: 12px;
+  text-align: center;
+  font-size: 14px;
+  border: 1px solid var(--border-color);
+}
+
+.travel-history-table th {
+  background: var(--panel-bg);
+  color: var(--text-color);
+}
+
+.travel-history-table td {
+  color: var(--text-color);
+}
+
+/* ==============================
+   MOBILE RESPONSIVE
+============================== */
+@media (max-width: 768px) {
+  .travel-history-table thead {
+    display: none;
+  }
+
+  .travel-history-table,
+  .travel-history-table tbody,
+  .travel-history-table tr,
+  .travel-history-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .travel-history-table tr {
+    margin-bottom: 15px;
+    background: var(--panel-bg);
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .travel-history-table td {
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .travel-history-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: inline-block;
+    width: 120px;
+    color: var(--text-muted);
+  }
+}

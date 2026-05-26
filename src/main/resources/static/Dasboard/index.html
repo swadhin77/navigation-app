@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navigation Dashboard</title>
+<link rel="stylesheet" href="../Dasboard/index.css">
+</head>
+<body>
+	<!-- Floating Control Panel -->
+	<div class="panel">
+		<input id="origin" type="text" placeholder="Enter starting point">
+		<input id="destination" type="text" placeholder="Enter destination">
+
+		<!-- Travel mode selection -->
+		<select id="mode">
+			<option value="DRIVING">Driving</option>
+			<option value="WALKING">Walking</option>
+			<option value="BICYCLING">Bicycling</option>
+			<option value="TRANSIT">Transit</option>
+		</select>
+
+		<button onclick="calculateRoute()">Get Route</button>
+		<div class="traffic-toggle">
+			<input type="checkbox" id="trafficToggle" onchange="toggleTrafficLayer()"> 
+				<label for="trafficToggle">Show Traffic</label>
+		</div>
+	</div>
+
+	<!-- Map container -->
+	<div id="map"></div>
+
+	<!-- Metrics bottom-left -->
+	<div class="metrics hidden" id="metrics">
+		<p>
+			<strong>Distance:</strong> <span id="distance"></span>
+		</p>
+		<p>
+			<strong>Duration:</strong> <span id="duration"></span>
+		</p>
+	</div>
+
+	<!-- Turn-by-turn directions panel -->
+	<div class="directions hidden" id="directions"></div>
+
+	<!-- Google Maps JS API -->
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACIFcCxF8nXdUW6TjfBMjY5dxV_HMp8ng&libraries=places&callback=initMap"
+		async defer></script>
+	<script src="../Dasboard/app.js"></script>
+</body>
+</html>
