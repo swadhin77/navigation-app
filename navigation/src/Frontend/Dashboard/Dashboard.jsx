@@ -13,7 +13,6 @@ import Setting from "../Setting/Setting.jsx";
 import Profile from "../Profile/Profile.jsx";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar.jsx";
-import Hamburger from "../Hamburger/Hamburger.jsx";
 import ContactUs from "../ContactUs/ContactUs.jsx";
 import { getFeatures } from "../config/featureFlags";
 import PanoramicView from "../components/PanoramicView";
