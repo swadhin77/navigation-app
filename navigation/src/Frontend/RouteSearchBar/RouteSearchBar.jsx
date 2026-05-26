@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./RouteSearchBar.css";
-import StopSearch from "../StopSearch/StopSearch";
 import RouteOptions from "../RouteOptions/RouteOptions.jsx";
 import LiveLocation from "../LiveLocation/LiveLocation.jsx";
 
