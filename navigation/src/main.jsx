@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import { LocationProvider } from "./Frontend/context/LocationProvider.jsx";
-import RootProvider from "./Frontend/context/RootProvider.jsx";
 import mapboxgl from "mapbox-gl";
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 /* ===== Theme Load ===== */
