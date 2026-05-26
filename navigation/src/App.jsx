@@ -18,7 +18,6 @@ import { TrafficProvider } from "./Frontend/context/TrafficContext.jsx"
 import { ThemeProvider } from "./Frontend/Other/Theam";
 import { NavigationProvider } from "./Frontend/Navigation/NavigationContext.jsx";
 import { VoiceProvider } from "./Frontend/context/VoiceContext.jsx";
-import { FriendProvider } from "./Frontend/context/FriendContext.jsx";
 
 /* ===== Offline Provider ===== */
 import { OfflineProvider } from "./Frontend/offline-feature/OfflineProvider";

@@ -10,7 +10,6 @@ import { useTheme } from "../Other/Theam";
 import Nearby from "../Nearby/Nearby.jsx";
 import AddGuest from "../Refer/AddGuest.jsx";
 import Setting from "../Setting/Setting.jsx";
-import Weather from "../Weather/Weather.jsx";
 import Profile from "../Profile/Profile.jsx";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar.jsx";
