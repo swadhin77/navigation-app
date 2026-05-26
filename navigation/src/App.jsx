@@ -7,7 +7,6 @@ import Register from "./Frontend/NewUser/Register.jsx";
 import ForgotPassword from "./Frontend/ForgotPassword/ForgotPassword.jsx";
 import Dashboard from "./Frontend/Dashboard/Dashboard.jsx";
 import Setting from "./Frontend/Setting/Setting.jsx";
-import Weather from "./Frontend/Weather/Weather.jsx";
 import ContactUs from "./Frontend/ContactUs/ContactUs.jsx";
 import Help from "./Frontend/Help/Help.jsx";
 import ReferFriend from "./Frontend/ReferaFriend/ReferFriend.jsx";
