@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./LiveLocation.css";
-import { sendLocation } from "../api/backend";
 import { useLocationData } from "../context/LocationProvider";
 const DURATIONS = {
   "15min": 15 * 60,
