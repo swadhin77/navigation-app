@@ -103,7 +103,7 @@ export default function Route() {
 		   mapRef.current?.remove();
 		   mapRef.current = null;
 		};
-	}, []);
+		};
 
 	/* ==================== REBUILD ROUTE USEEFFECT ==================== */
 	useEffect(() => {
