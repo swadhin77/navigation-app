@@ -10,7 +10,6 @@ import Setting from "./Frontend/Setting/Setting.jsx";
 import ContactUs from "./Frontend/ContactUs/ContactUs.jsx";
 import Help from "./Frontend/Help/Help.jsx";
 import ReferFriend from "./Frontend/ReferaFriend/ReferFriend.jsx";
-import SearchPoint from "./Frontend/SearchPoint/SearchPoint.jsx";
 import RoutePage from "./Frontend/Route/Route.jsx";
 import StartNavigation from "./Frontend/StartNavigation/StartNavigation.jsx";
 import { TrafficProvider } from "./Frontend/context/TrafficContext.jsx"
