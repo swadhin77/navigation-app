@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { sendLocation, reverseGeocode } from "../api/backend";
 export default function useLocation() {
   const [location, setLocation] = useState({
     lat: null,
