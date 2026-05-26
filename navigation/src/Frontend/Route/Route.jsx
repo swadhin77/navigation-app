@@ -17,7 +17,6 @@ import useLocationHook from "../hooks/useLocation";
 import { shareRoute, copyRouteLink } from "../ShareRoutes/shareRoute";
 import { showToast } from "../Other/useToast";
 import { useNavigationData } from "../Navigation/NavigationContext";
-import { fetchRoute } from "../api/backend"; 
 
 export default function Route() {
 	const { lat, lng, error } = useLocationHook();
